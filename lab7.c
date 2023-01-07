@@ -7,7 +7,7 @@
 void main()
 {
     int op, mn = 1, nr = 0, i = 0;
-    int aj, st;
+    int st;
 
     struct computer *obj, tmp;
 
@@ -55,51 +55,25 @@ void main()
             }
             continue;
         case 5: // modificarea elementului
-
-            printf("Introduceti numarul obiectului:");
-            scanf("%d", &aj);
-            // printf("%s hai odata", obj[aj].model);
-            printf("Nume model:");
-            scanf("%s", obj[aj].model);
-            printf("Nume procesor:");
-            scanf("%s", obj[aj].procesor);
-            printf("Memorie:");
-            scanf("%d", &obj[aj].memorie);
-            printf("Viteza:");
-            scanf("%d", &obj[aj].viteza);
-            printf("Pretul:");
-            scanf("%d", &obj[aj].pretul);
-
+            modificare(nr, obj);
             continue;
         case 6: // afisarea elementului cautat
             cautare(nr, obj);
             continue;
-        case 7:
-            for (int i = 0; i < nr; i++)
-            {
-                for (int j = nr - 1; j >= i; j--)
-                {
-
-                    if (strcmp(obj[j - 1].model, obj[j].model) > 0)
-                    {
-                        tmp = obj[j - 1];
-                        obj[j - 1] = obj[j];
-                        obj[j] = tmp;
-                    }
-                }
-            }
-
+        case 7: // functie pentru sortare
+            sortare(nr, obj);
             continue;
-        case 8:
+        case 8: // stergere
             printf("Introduceti numarul productului:");
             scanf("%d", &st);
 
-            for (int i = st; i < nr; i++)
+            for (int i = st; i < nr; i++)//de la nr introdus
             {
 
-                obj[i] = obj[i + 1];
+                obj[i] = obj[i + 1];//rescriem obiectele
                 nr--;
             }
+            
             continue;
         case 9:
             free(obj);

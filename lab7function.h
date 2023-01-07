@@ -1,10 +1,10 @@
 
-#include "lab7struct.h"
+#include "lab7struct.h"//includem structura
 
-int menu()
+int menu()//afisarea meniului cu optiuni
 {
     int op;
-    // system("cls");
+    // system("cls"); //curata ecranul
     printf("\t\tMeniu\t\t\n\n");
     printf("1. Alocarea dinamica a memoriei pentru tabloul de structuri.\n"); //+
     printf("2. Introducerea elementelor tabloului de la tastatura.\n");       //+
@@ -17,9 +17,9 @@ int menu()
     printf("9. Eliberarea memoriei alocate pentru tablou.\n");                //+
     printf("0. Iesire din program.\n\n");                                     //+
 
-    printf("Introduceti operatia:");
+    printf("Introduceti operatia:");//citirea optiunii
     scanf("%d", &op);
-    return op;
+    return op;//intoarcerea nr optiunii
 }
 
 void afisare(int nr, struct computer obj[nr]) // functie afisare//3
@@ -31,14 +31,49 @@ void afisare(int nr, struct computer obj[nr]) // functie afisare//3
     }
 }
 
-void cautare(int nr, struct computer obj[nr])
+void cautare(int nr, struct computer obj[nr])//functia cautare
 {
     char aj2[50];
-    printf("Introduceti modelul obiectului:");
+    printf("Introduceti modelul obiectului:");//citim modelul cautat
     scanf("%s", &aj2);
     for (int i = 0; i < nr; i++)
     {
-        if (strcmp(obj[i].model, aj2) == 0)
+        if (strcmp(obj[i].model, aj2) == 0)//comparam fiecare model cu cel introdus
             printf("%d %s\t%s\t%d\t%d\t%d\n", i, obj[i].model, obj[i].procesor, obj[i].memorie, obj[i].viteza, obj[i].pretul);
+    }
+}
+
+void modificare(int nr, struct computer obj[nr])//functia de modificare
+{
+    int aj;
+    printf("Introduceti numarul obiectului:");//citim nr de ordine a obiectului care va fi modificat
+    scanf("%d", &aj);
+    printf("Nume model:");
+    scanf("%s", obj[aj].model);
+    printf("Nume procesor:");
+    scanf("%s", obj[aj].procesor);
+    printf("Memorie:");
+    scanf("%d", &obj[aj].memorie);
+    printf("Viteza:");
+    scanf("%d", &obj[aj].viteza);
+    printf("Pretul:");
+    scanf("%d", &obj[aj].pretul);
+}
+
+void sortare(int nr, struct computer obj[nr])
+{
+    struct computer tmp;//declaram tmp de tip structura pentru a memora datele la modificare
+    for (int i = 0; i < nr; i++)
+    {
+        for (int j = nr - 1; j >= i; j--)//j de la sfarsit spre i
+        {
+
+            if (strcmp(obj[j - 1].model, obj[j].model) > 0)//daca obiectul precedent e mai mare
+            {
+                tmp = obj[j - 1];//prin bule le schimbam
+                obj[j - 1] = obj[j];
+                obj[j] = tmp;
+            }
+        }
     }
 }
