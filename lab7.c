@@ -1,20 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lab7function.h"
-#include "lab7struct.h"
+#include "lab7function.h" //includem functiile
+#include "lab7struct.h"   //includem structura
 
 void main()
 {
     int op, mn = 1, nr = 0, i = 0;
     int aj, st;
-    char aj2[50];
 
     struct computer *obj, tmp;
 
     while (mn)
     {
-        op = menu();//afisarea menu + optiuni
+        op = menu(); // afisarea menu + optiuni
         switch (op)
         {
         case 1:                                                          // alocarea memorie
@@ -73,13 +72,7 @@ void main()
 
             continue;
         case 6: // afisarea elementului cautat
-            printf("Introduceti modelul obiectului:");
-            scanf("%s", &aj2);
-            for (i = 0; i < nr; i++)
-            {
-                if (strcmp(obj[i].model, aj2) == 0)
-                    printf("%d %s\t%s\t%d\t%d\t%d\n", i, obj[i].model, obj[i].procesor, obj[i].memorie, obj[i].viteza, obj[i].pretul);
-            }
+            cautare(nr, obj);
             continue;
         case 7:
             for (int i = 0; i < nr; i++)
@@ -118,14 +111,5 @@ void main()
 
             break;
         }
-    }
-}
-
-void afisare(int nr, struct computer obj[nr]) // functie afisare//3
-{
-    printf("Date tabel\nModel\tProcesor\tMemorie\tViteza\tPretul\n"); // afisam randul cu denumirea coloanelor
-    for (int i = 0; i < nr; i++)                                      // parcurgem obiectele si le afisam
-    {
-        printf("%d %s\t%s\t%d\t%d\t%d\n", i, obj[i].model, obj[i].procesor, obj[i].memorie, obj[i].viteza, obj[i].pretul);
     }
 }
