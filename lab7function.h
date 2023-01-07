@@ -1,7 +1,7 @@
 
-#include "lab7struct.h"//includem structura
+#include "lab7struct.h" //includem structura
 
-int menu()//afisarea meniului cu optiuni
+int menu() // afisarea meniului cu optiuni
 {
     int op;
     // system("cls"); //curata ecranul
@@ -17,36 +17,36 @@ int menu()//afisarea meniului cu optiuni
     printf("9. Eliberarea memoriei alocate pentru tablou.\n");                //+
     printf("0. Iesire din program.\n\n");                                     //+
 
-    printf("Introduceti operatia:");//citirea optiunii
+    printf("Introduceti operatia:"); // citirea optiunii
     scanf("%d", &op);
-    return op;//intoarcerea nr optiunii
+    return op; // intoarcerea nr optiunii
 }
 
 void afisare(int nr, struct computer obj[nr]) // functie afisare//3
 {
-    printf("Date tabel\nModel\tProcesor\tMemorie\tViteza\tPretul\n"); // afisam randul cu denumirea coloanelor
+    printf("Date tabel\n\tModel\tProcesor\tMemorie\tViteza\tPretul\n"); // afisam randul cu denumirea coloanelor
     for (int i = 0; i < nr; i++)                                      // parcurgem obiectele si le afisam
     {
-        printf("%d %s\t%s\t%d\t%d\t%d\n", i, obj[i].model, obj[i].procesor, obj[i].memorie, obj[i].viteza, obj[i].pretul);
+        printf("%d\t%s\t%s\t%d\t%d\t%d\n", i, obj[i].model, obj[i].procesor, obj[i].memorie, obj[i].viteza, obj[i].pretul);
     }
 }
 
-void cautare(int nr, struct computer obj[nr])//functia cautare
+void cautare(int nr, struct computer obj[nr]) // functia cautare
 {
     char aj2[50];
-    printf("Introduceti modelul obiectului:");//citim modelul cautat
+    printf("Introduceti modelul obiectului:"); // citim modelul cautat
     scanf("%s", &aj2);
     for (int i = 0; i < nr; i++)
     {
-        if (strcmp(obj[i].model, aj2) == 0)//comparam fiecare model cu cel introdus
+        if (strcmp(obj[i].model, aj2) == 0) // comparam fiecare model cu cel introdus
             printf("%d %s\t%s\t%d\t%d\t%d\n", i, obj[i].model, obj[i].procesor, obj[i].memorie, obj[i].viteza, obj[i].pretul);
     }
 }
 
-void modificare(int nr, struct computer obj[nr])//functia de modificare
+void modificare(int nr, struct computer obj[nr]) // functia de modificare
 {
     int aj;
-    printf("Introduceti numarul obiectului:");//citim nr de ordine a obiectului care va fi modificat
+    printf("Introduceti numarul obiectului:"); // citim nr de ordine a obiectului care va fi modificat
     scanf("%d", &aj);
     printf("Nume model:");
     scanf("%s", obj[aj].model);
@@ -62,18 +62,31 @@ void modificare(int nr, struct computer obj[nr])//functia de modificare
 
 void sortare(int nr, struct computer obj[nr])
 {
-    struct computer tmp;//declaram tmp de tip structura pentru a memora datele la modificare
+    struct computer tmp; // declaram tmp de tip structura pentru a memora datele la modificare
     for (int i = 0; i < nr; i++)
     {
-        for (int j = nr - 1; j >= i; j--)//j de la sfarsit spre i
+        for (int j = nr - 1; j >= i; j--) // j de la sfarsit spre i
         {
 
-            if (strcmp(obj[j - 1].model, obj[j].model) > 0)//daca obiectul precedent e mai mare
+            if (strcmp(obj[j - 1].model, obj[j].model) > 0) // daca obiectul precedent e mai mare
             {
-                tmp = obj[j - 1];//prin bule le schimbam
+                tmp = obj[j - 1]; // prin bule le schimbam
                 obj[j - 1] = obj[j];
                 obj[j] = tmp;
             }
         }
     }
+}
+void sterge(int *nr, struct computer obj[*nr])
+{
+    int st;
+    printf("Introduceti numarul productului:");
+    scanf("%d", &st);
+
+    for (int i = st; i < *nr; i++) // de la nr introdus
+    {
+
+        obj[i] = obj[i + 1]; // rescriem obiectele
+    }
+    *nr = *nr - 1;
 }

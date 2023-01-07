@@ -20,6 +20,7 @@ void main()
             obj = (struct course *)malloc(50 * sizeof(struct computer)); // alocam memorie
             continue;
         case 2: // introducerea elementelor
+            i = nr;
             nr++;
             for (i; i < nr; i++)
             {
@@ -39,6 +40,7 @@ void main()
             afisare(nr, obj); // functie pentru afisarea datelor
             continue;
         case 4: // introducerea elementelor
+            i = nr;
             nr++;
             for (i; i < nr; i++)
             {
@@ -64,16 +66,7 @@ void main()
             sortare(nr, obj);
             continue;
         case 8: // stergere
-            printf("Introduceti numarul productului:");
-            scanf("%d", &st);
-
-            for (int i = st; i < nr; i++)//de la nr introdus
-            {
-
-                obj[i] = obj[i + 1];//rescriem obiectele
-                nr--;
-            }
-            
+            sterge(&nr, obj);
             continue;
         case 9:
             free(obj);
