@@ -3,17 +3,19 @@
 #include <string.h>
 #include "lab7function.h"
 
+struct computer
+    {
+        char model[50], procesor[50];
+        int memorie, viteza, pretul;
+    };
+
 void main()
 {
     int op, mn = 1, nr = 0, i = 0;
     int aj, st;
     char aj2[50];
 
-    struct computer
-    {
-        char model[50], procesor[50];
-        int memorie, viteza, pretul;
-    };
+    
 
     struct computer *obj, tmp;
 
