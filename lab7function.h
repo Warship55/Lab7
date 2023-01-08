@@ -22,7 +22,7 @@ int menu() // afisarea meniului cu optiuni
     return op; // intoarcerea nr optiunii
 }
 
-void afisare(int nr, struct computer obj[nr]) // functie afisare//3
+void afisare(int nr, struct computer obj[nr]) // functie afisare
 {
     printf("Date tabel\n\tModel\tProcesor\tMemorie\tViteza\tPretul\n"); // afisam randul cu denumirea coloanelor
     for (int i = 0; i < nr; i++)                                        // parcurgem obiectele si le afisam
@@ -49,7 +49,7 @@ void modificare(int nr, struct computer obj[nr]) // functia de modificare
     printf("Introduceti numarul obiectului:"); // citim nr de ordine a obiectului care va fi modificat
     scanf("%d", &aj);
     printf("Nume model:");
-    scanf("%s", obj[aj].model);
+    scanf("%s", obj[aj].model);//citim si rescriem datele direct
     printf("Nume procesor:");
     scanf("%s", obj[aj].procesor);
     printf("Memorie:");
@@ -60,7 +60,7 @@ void modificare(int nr, struct computer obj[nr]) // functia de modificare
     scanf("%d", &obj[aj].pretul);
 }
 
-void sortare(int nr, struct computer obj[nr])
+void sortare(int nr, struct computer obj[nr])//functia sortare
 {
     struct computer tmp; // declaram tmp de tip structura pentru a memora datele la modificare
     for (int i = 0; i < nr; i++)
@@ -78,7 +78,7 @@ void sortare(int nr, struct computer obj[nr])
     }
 }
 void sterge(int *nr, struct computer obj[*nr])
-{
+{   //*nr vine ca pointer ca sa se modifice fara return
     int st;
     printf("Introduceti numarul productului:");
     scanf("%d", &st);
@@ -88,18 +88,18 @@ void sterge(int *nr, struct computer obj[*nr])
 
         obj[i] = obj[i + 1]; // rescriem obiectele
     }
-    *nr = *nr - 1;
+    *nr = *nr - 1;//scadem nr de inregistrari
 }
 void adaugare(int *nr, struct computer obj[*nr])
-{
-    int i = *nr;
-    *nr = *nr + 1;
+{   //*nr vine ca pointer ca sa se modifice fara return
+    int i = *nr;//i primeste nr de inregistrari
+    *nr = *nr + 1;//adaugam o inregistrare
     for (i; i < *nr; i++)
     {
         printf("Nume model:");
-        scanf("%s", &obj[i].model); /// obj[i].model (obj + i)->model
+        scanf("%s", &obj[i].model); /// echivalent obj[i].model (obj + i)->model
         printf("Nume procesor:");
-        scanf("%s", &obj[i].procesor);
+        scanf("%s", &obj[i].procesor);//citim date si le inregistram in tabel unidimensional
         printf("Memorie:");
         scanf("%d", &obj[i].memorie);
         printf("Viteza:");
