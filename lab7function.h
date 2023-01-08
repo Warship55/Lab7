@@ -25,7 +25,7 @@ int menu() // afisarea meniului cu optiuni
 void afisare(int nr, struct computer obj[nr]) // functie afisare//3
 {
     printf("Date tabel\n\tModel\tProcesor\tMemorie\tViteza\tPretul\n"); // afisam randul cu denumirea coloanelor
-    for (int i = 0; i < nr; i++)                                      // parcurgem obiectele si le afisam
+    for (int i = 0; i < nr; i++)                                        // parcurgem obiectele si le afisam
     {
         printf("%d\t%s\t%s\t%d\t%d\t%d\n", i, obj[i].model, obj[i].procesor, obj[i].memorie, obj[i].viteza, obj[i].pretul);
     }
@@ -89,4 +89,22 @@ void sterge(int *nr, struct computer obj[*nr])
         obj[i] = obj[i + 1]; // rescriem obiectele
     }
     *nr = *nr - 1;
+}
+void adaugare(int *nr, struct computer obj[*nr])
+{
+    int i = *nr;
+    *nr = *nr + 1;
+    for (i; i < *nr; i++)
+    {
+        printf("Nume model:");
+        scanf("%s", &obj[i].model); /// obj[i].model (obj + i)->model
+        printf("Nume procesor:");
+        scanf("%s", &obj[i].procesor);
+        printf("Memorie:");
+        scanf("%d", &obj[i].memorie);
+        printf("Viteza:");
+        scanf("%d", &obj[i].viteza);
+        printf("Pretul:");
+        scanf("%d", &obj[i].pretul);
+    }
 }

@@ -6,55 +6,26 @@
 
 void main()
 {
-    int op, mn = 1, nr = 0, i = 0;
-    int st;
+    int op, mn = 1, nr = 0;
 
-    struct computer *obj, tmp;
+    struct computer *obj;
 
     while (mn)
     {
         op = menu(); // afisarea menu + optiuni
         switch (op)
         {
-        case 1:                                                          // alocarea memorie
-            obj = (struct course *)malloc(50 * sizeof(struct computer)); // alocam memorie
+        case 1:                                                          
+            obj = (struct computer *)malloc(100 * sizeof(struct computer)); // alocam memorie
             continue;
         case 2: // introducerea elementelor
-            i = nr;
-            nr++;
-            for (i; i < nr; i++)
-            {
-                printf("Nume model:");
-                scanf("%s", &obj[i].model); /// obj[i].model (obj + i)->model
-                printf("Nume procesor:");
-                scanf("%s", &obj[i].procesor);
-                printf("Memorie:");
-                scanf("%d", &obj[i].memorie);
-                printf("Viteza:");
-                scanf("%d", &obj[i].viteza);
-                printf("Pretul:");
-                scanf("%d", &obj[i].pretul);
-            }
+            adaugare(&nr,obj);
             continue;
-        case 3:               // afisarea datelor
+        case 3:               
             afisare(nr, obj); // functie pentru afisarea datelor
             continue;
         case 4: // introducerea elementelor
-            i = nr;
-            nr++;
-            for (i; i < nr; i++)
-            {
-                printf("Nume model:");
-                scanf("%s", (obj + i)->model);
-                printf("Nume procesor:");
-                scanf("%s", (obj + i)->procesor);
-                printf("Memorie:");
-                scanf("%d", &(obj + i)->memorie);
-                printf("Viteza:");
-                scanf("%d", &(obj + i)->viteza);
-                printf("Pretul:");
-                scanf("%d", &(obj + i)->pretul);
-            }
+            adaugare(&nr,obj);
             continue;
         case 5: // modificarea elementului
             modificare(nr, obj);
