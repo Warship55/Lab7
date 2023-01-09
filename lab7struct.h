@@ -2,7 +2,7 @@
 #define lab7struct_h//_h standart iso c99
 struct computer
 {
-    char model[50], procesor[50];//componentele structurii
+    char model[50], procesor[50];//componentele structurii  
     int memorie, viteza, pretul;
 };
 

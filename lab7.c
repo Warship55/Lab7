@@ -1,7 +1,6 @@
 #include <stdio.h>//prevenirea declararea implicita a functilor scanf printf
 #include <stdlib.h>//prevenirea declararea implicita a functilor malloc free
 #include <string.h>//prevenirea declararea implicita a functiei strcmp
-                    //vs code + plugins si merge si fara declararea bibliotecilor
 
 #include "lab7function.h" //includem functiile
 #include "lab7struct.h"   //includem structura
@@ -36,14 +35,19 @@ void main()
             cautare(nr, obj);
             continue;
         case 7: // functie pentru sortare
-            sortare(nr, obj);
+            afisare(nr, obj);//afis inainte datele
+            sortare(nr, obj);//sortare
+            afisare(nr, obj);//afis date dupa sortare
             continue;
         case 8: // stergere
+            afisare(nr, obj);//afis inainte datele
             sterge(&nr, obj);
+            afisare(nr, obj);//afis date dupa sortare
             continue;
         case 9:
-            free(obj);
+            free(obj);//eliberarea memorie
             nr = 0;
+            printf("Eliberarea memorie\n");
             continue;
         case 0:
             printf("Inchidere program");
